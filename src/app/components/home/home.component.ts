@@ -1,5 +1,6 @@
 import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,10 @@ import { ThemePalette } from '@angular/material/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, DoCheck {
+
+  isLight = false
+  theme = 'Light'
+  sub!: Subscription
 
   constructor() { }
 
@@ -20,9 +25,10 @@ export class HomeComponent implements OnInit, DoCheck {
       this.theme = 'Light'
     }
   }
+
   
-  isLight = false
-  theme = 'Light'
+  
+  
 
 
 }
