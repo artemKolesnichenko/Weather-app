@@ -1,1 +1,21 @@
-<p>home works!</p>
+<nav>
+    <div class="nav__header">
+        <h1>Weather Forecast</h1>
+    </div>
+    
+    <p class="nav__input">
+        <mat-form-field appearance="outline">
+          <mat-label>Введите город</mat-label>
+          <input autocomplete="off" matInput placeholder="Kiev">
+        </mat-form-field>
+    </p>
+     
+    <section>
+        <mat-slide-toggle
+            class="nav__slide-toggle"
+            [(ngModel)]="isLight">
+          {{theme}}
+        </mat-slide-toggle>
+      </section>
+        
+</nav>
