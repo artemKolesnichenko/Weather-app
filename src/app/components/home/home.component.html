@@ -6,7 +6,7 @@
     <p class="nav__input">
         <mat-form-field appearance="outline">
           <mat-label>Введите город</mat-label>
-          <input autocomplete="off" matInput placeholder="Kiev">
+          <input (keypress.enter)="getWeather()" [(ngModel)]="search" autocomplete="off" matInput placeholder="Kiev">
         </mat-form-field>
     </p>
      
@@ -16,6 +16,7 @@
             [(ngModel)]="isLight">
           {{theme}}
         </mat-slide-toggle>
-      </section>
-        
+      </section> 
 </nav>
+
+<app-forecast [cityName]="search"></app-forecast>

@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { WeatherService } from '../shared/service/weather.sevice';
+
+export interface weatherToday {
+  name: string
+}
 
 @Component({
   selector: 'app-forecast',
@@ -7,17 +13,25 @@ import { WeatherService } from '../shared/service/weather.sevice';
   styleUrls: ['./forecast.component.scss']
 })
 export class ForecastComponent implements OnInit {
+  weatherData: weatherToday = {
+    name: 'Kiev'
+  }
+  @Input() cityName!: string
 
   constructor(public weatherService: WeatherService) { }
 
   ngOnInit(): void {
+    this.weatherService.getDataForecast('Kiev').subscribe((data: weatherToday) => {
+      this.weatherData = data
+    })
+    
     
   }
 
   click(){
-    this.weatherService.getForecast('Kiev').subscribe()
+    console.log(this.weatherData);
+    
   }
 
-  
 
 }

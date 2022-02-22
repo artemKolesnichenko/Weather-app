@@ -1,6 +1,6 @@
-import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-import { Subscription } from 'rxjs';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { fromEvent, Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit, DoCheck {
 
   isLight = false
   theme = 'Light'
-  sub!: Subscription
+  search!: string
 
   constructor() { }
 
@@ -26,9 +26,9 @@ export class HomeComponent implements OnInit, DoCheck {
     }
   }
 
-  
-  
-  
+  getWeather() {
+    this.search
+  }
 
-
+  
 }
