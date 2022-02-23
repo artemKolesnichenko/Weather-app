@@ -6,7 +6,7 @@
     <p class="nav__input">
         <mat-form-field appearance="outline">
           <mat-label>Введите город</mat-label>
-          <input (keypress.enter)="getWeather()" [(ngModel)]="search" autocomplete="off" matInput placeholder="Kiev">
+          <input (keydown.enter)="getWeather()" [(ngModel)]="search" autocomplete="off" matInput placeholder="Kyiv">
         </mat-form-field>
     </p>
      
@@ -19,4 +19,4 @@
       </section> 
 </nav>
 
-<app-forecast [cityName]="search"></app-forecast>
+<app-forecast [weather]="weatherData"></app-forecast>

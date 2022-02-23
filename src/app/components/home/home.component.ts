@@ -1,5 +1,7 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { fromEvent, Observable } from 'rxjs';
+import { weatherToday } from '../forecast/forecast.component';
+import { WeatherService } from '../shared/service/weather.sevice';
 
 
 @Component({
@@ -12,8 +14,9 @@ export class HomeComponent implements OnInit, DoCheck {
   isLight = false
   theme = 'Light'
   search!: string
+  weatherData: any
 
-  constructor() { }
+  constructor(public weatherService: WeatherService) { }
 
   ngOnInit(): void {
   }
@@ -27,7 +30,11 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   getWeather() {
-    this.search
+    this.weatherService.getDataForecast(this.search).subscribe((data: weatherToday) => {
+      this.weatherData = data
+      console.log(this.weatherData);
+      
+    })
   }
 
   

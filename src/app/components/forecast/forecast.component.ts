@@ -5,6 +5,9 @@ import { WeatherService } from '../shared/service/weather.sevice';
 
 export interface weatherToday {
   name: string
+  current: {
+    temp: number
+  }
 }
 
 @Component({
@@ -13,25 +16,22 @@ export interface weatherToday {
   styleUrls: ['./forecast.component.scss']
 })
 export class ForecastComponent implements OnInit {
-  weatherData: weatherToday = {
-    name: 'Kiev'
-  }
-  @Input() cityName!: string
+  
+  cityName!: string 
+  @Input() weather!: weatherToday
+  currentTemp!:number
+
+  
 
   constructor(public weatherService: WeatherService) { }
 
   ngOnInit(): void {
     this.weatherService.getDataForecast('Kiev').subscribe((data: weatherToday) => {
-      this.weatherData = data
+      this.weather = data
+      this.cityName = this.weatherService.data.name
+      this.currentTemp =Math.floor(data.current.temp) 
+      console.log(this.weather);
+      
     })
-    
-    
   }
-
-  click(){
-    console.log(this.weatherData);
-    
-  }
-
-
 }

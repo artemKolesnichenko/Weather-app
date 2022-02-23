@@ -1,6 +1,12 @@
-<section class="forecast">
+<section *ngIf="weather" class="forecast">
     <div class="forecast__city">
-        <h2>{{'sss'}}</h2>
-        <button (click)="click()"></button>
+        
+        <h2>{{this.weatherService.data.name}}</h2>
+        <small>Name of city</small>
+    </div>
+    <div class="forecast__temp">
+        <img src="">
+        <p>{{currentTemp}} C°</p>
+        <small>Сurrent temperature</small>
     </div>
 </section>
